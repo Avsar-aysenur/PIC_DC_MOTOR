@@ -100,11 +100,11 @@ void main()
    while(TRUE)
    {
     
-      set_adc_channel(0);       // AN0 numaralı kanaldan okuma yapacağımızı belirttik
-      analogBilgi = read_adc(); // AN0 numaralı kanaldan analog değeri oku
-      delay_ms(1);
+   set_adc_channel(0);       // AN0 numaralı kanaldan okuma yapacağımızı belirttik
+   analogBilgi = read_adc(); // AN0 numaralı kanaldan analog değeri oku
+    delay_ms(1);
       
-      ButtonState = input(ON_OFF);     
+ ButtonState = input(ON_OFF);     
           
    if(ButtonState == 1){
    counter++;
@@ -120,42 +120,39 @@ void main()
    
    if(counter==1){
 
-     if(input(BTN_FORWARD)==0 && input(BTN_BACKWARD)==0){i=0;}
-        
-         if(input(BTN_FORWARD)==1 && input(BTN_BACKWARD)==0){
-         while(input(BTN_BACKWARD)==1 && input(BTN_FORWARD)==0){
+   if(input(BTN_FORWARD)==0 && input(BTN_BACKWARD)==0){i=0;}
+     if(input(BTN_FORWARD)==1 && input(BTN_BACKWARD)==0){
+     while(input(BTN_BACKWARD)==1 && input(BTN_FORWARD)==0){
          
-         if(i < analogBilgi){ // PWM değeri pot olana kadar artır
+  if(i < analogBilgi){ // PWM değeri pot olana kadar artır
       i++; 
       delay_ms(10); } // Bekleme süresini artır
       if(i >= analogBilgi){
       i=analogBilgi;
       }
          
-         }
-         FORWARD(); 
-      
-         }
+ }
+        FORWARD(); 
+       }
   
-       else if (input(BTN_BACKWARD)==1 && input(BTN_FORWARD)==0){    
-        while(input(BTN_FORWARD)==1 && input(BTN_BACKWARD)==0){
+ else if (input(BTN_BACKWARD)==1 && input(BTN_FORWARD)==0){    
+while(input(BTN_FORWARD)==1 && input(BTN_BACKWARD)==0){
         
-            if(i < analogBilgi){ // PWM değeri pot olana kadar artır
+  if(i < analogBilgi){ // PWM değeri pot olana kadar artır
       i++; 
       delay_ms(10); } // Bekleme süresini artır
       if(i >= analogBilgi){
       i=analogBilgi;
       }
-        }
+    }
       
-         BACKWARD();  
+   BACKWARD();  
           
-       }}
+  }}
          
-          if(counter==0){
+  if(counter==0){
    
    stop();
    }
-         
-      }
+             }
    }
